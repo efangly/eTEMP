@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:temp_noti/src/bloc/notifications_bloc/notifications_bloc.dart';
+import 'package:temp_noti/src/bloc/notification/notifications_bloc.dart';
 import 'package:temp_noti/src/configs/route.dart' as custom_route;
 import 'package:badges/badges.dart' as badges;
 
@@ -66,6 +66,7 @@ class ManuBar extends StatelessWidget {
           },
         ),
         PopupMenuButton<Menu>(
+          color: const Color.fromARGB(255, 0, 77, 192),
           icon: const Icon(Icons.more_vert, size: 35.0),
           onSelected: (Menu item) {
             switch (item) {

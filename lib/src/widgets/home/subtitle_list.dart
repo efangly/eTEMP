@@ -12,6 +12,10 @@ class SubtitleList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
+          deviceInfo!.devSerial ?? "-",
+          style: const TextStyle(fontWeight: FontWeight.w500),
+        ),
+        Text(
           deviceInfo!.locInstall ?? "-",
           style: const TextStyle(fontWeight: FontWeight.w500),
         ),
@@ -24,7 +28,7 @@ class SubtitleList extends StatelessWidget {
               deviceInfo!.noti!.where((i) => i.notiDetail!.substring(0, 4) == "TEMP").toList().length.toString(),
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
             const FaIcon(FontAwesomeIcons.doorOpen, size: 18.0),
             const SizedBox(width: 2),
             Text(
@@ -35,32 +39,32 @@ class SubtitleList extends StatelessWidget {
                   .toString(),
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
             const FaIcon(FontAwesomeIcons.plugCircleXmark, size: 18.0),
             const SizedBox(width: 2),
             Text(
               deviceInfo!.noti!.where((i) => i.notiDetail!.substring(0, 2) == "AC").toList().length.toString(),
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
             const FaIcon(FontAwesomeIcons.sdCard, size: 18.0),
             const SizedBox(width: 2),
             Text(
               deviceInfo!.noti!.where((i) => i.notiDetail!.substring(0, 2) == "SD").toList().length.toString(),
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
             const FaIcon(FontAwesomeIcons.wifi, size: 18.0),
             const SizedBox(width: 2),
             Text(
               deviceInfo!.cCount!.log.toString(),
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
             const FaIcon(FontAwesomeIcons.batteryHalf, size: 18.0),
             const SizedBox(width: 2),
             Text(
-              deviceInfo!.log!.isEmpty ? "0%" : "${deviceInfo!.log![0].battery}%",
+              deviceInfo!.log!.isEmpty ? "0" : "${deviceInfo!.log![0].battery}",
               style: const TextStyle(fontSize: 14),
             ),
           ],

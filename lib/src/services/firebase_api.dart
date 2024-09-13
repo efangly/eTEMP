@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
@@ -5,7 +6,25 @@ class FirebaseApi {
   final _firebaseMessaging = FirebaseMessaging.instance;
 
   Future<void> initNotifications() async {
-    await _firebaseMessaging.subscribeToTopic('test');
+    if (Platform.isIOS) {
+      String? apnsToken = await _firebaseMessaging.getAPNSToken();
+      if (apnsToken != null) {
+        await _firebaseMessaging.subscribeToTopic('test');
+      } else {
+        await Future<void>.delayed(
+          const Duration(
+            seconds: 3,
+          ),
+        );
+        apnsToken = await _firebaseMessaging.getAPNSToken();
+        if (apnsToken != null) {
+          await _firebaseMessaging.subscribeToTopic('test');
+        }
+      }
+    } else {
+      await _firebaseMessaging.subscribeToTopic('test');
+    }
+    // await _firebaseMessaging.subscribeToTopic('test');
     await _firebaseMessaging.requestPermission(
       alert: true,
       announcement: true,

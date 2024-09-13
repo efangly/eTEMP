@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temp_noti/src/constants/color.dart';
 import 'package:temp_noti/src/widgets/setting/noti_setting.dart';
+import 'package:temp_noti/src/widgets/setting/schedule_setting.dart';
 import 'package:temp_noti/src/widgets/utils/appbar.dart';
 
 class SettingPage extends StatefulWidget {
@@ -21,6 +22,8 @@ class _SettingPageState extends State<SettingPage> {
   @override
   void initState() {
     super.initState();
+    firstController.text = "0";
+    repeatController.text = "0";
   }
 
   @override
@@ -63,17 +66,25 @@ class _SettingPageState extends State<SettingPage> {
       body: Stack(
         children: [
           Container(decoration: ConstColor.bgColor),
-          NotiSetting(
-            onFirstMsg: (bool msg) => setState(() => firstMsg = msg),
-            onNormalMsg: (bool msg) => setState(() => normalMsg = msg),
-            onRepeatMsg: (bool msg) => setState(() => repeatMsg = msg),
-            onNotificationMsg: (bool msg) => setState(() => notificationMsg = msg),
-            firstMsg: firstMsg,
-            normalMsg: normalMsg,
-            repeatMsg: repeatMsg,
-            notificationMsg: notificationMsg,
-            firstController: firstController,
-            repeatController: repeatController,
+          Padding(
+            padding: const EdgeInsets.only(top: 8, left: 15, right: 15, bottom: 8),
+            child: Column(
+              children: [
+                NotiSetting(
+                  onFirstMsg: (bool msg) => setState(() => firstMsg = msg),
+                  onNormalMsg: (bool msg) => setState(() => normalMsg = msg),
+                  onRepeatMsg: (bool msg) => setState(() => repeatMsg = msg),
+                  onNotificationMsg: (bool msg) => setState(() => notificationMsg = msg),
+                  firstMsg: firstMsg,
+                  normalMsg: normalMsg,
+                  repeatMsg: repeatMsg,
+                  notificationMsg: notificationMsg,
+                  firstController: firstController,
+                  repeatController: repeatController,
+                ),
+                const ScheduleSetting(),
+              ],
+            ),
           ),
           // Text(arguments['id']),
         ],

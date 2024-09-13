@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:temp_noti/src/bloc/devices_bloc/devices_bloc.dart';
+import 'package:temp_noti/src/bloc/device/devices_bloc.dart';
 import 'package:temp_noti/src/configs/route.dart' as custom_route;
 import 'package:temp_noti/src/constants/color.dart';
 import 'package:temp_noti/src/constants/url.dart';
@@ -19,7 +19,6 @@ class MachineList extends StatelessWidget {
     }
 
     return Container(
-      padding: const EdgeInsets.only(top: 8.0),
       decoration: ConstColor.bgColor,
       child: RefreshIndicator(
         onRefresh: refreshData,
@@ -30,14 +29,20 @@ class MachineList extends StatelessWidget {
           return ListView.separated(
             itemCount: state.devices.length,
             separatorBuilder: (BuildContext context, int index) => const Divider(
-              color: Colors.white54,
+              color: Colors.white38,
               height: 1,
-              indent: 20,
-              endIndent: 20,
+              indent: 15,
+              endIndent: 15,
             ),
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                leading: ConstrainedBox(
+                title: Text(
+                  state.devices[index].devDetail ?? "ไม่มีชื่อ",
+                  style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
+                ),
+                tileColor: const Color.fromARGB(255, 165, 190, 202),
+                subtitle: SubtitleList(deviceInfo: state.devices[index]),
+                trailing: ConstrainedBox(
                   constraints: const BoxConstraints(
                     minWidth: 44,
                     minHeight: 44,
@@ -52,12 +57,6 @@ class MachineList extends StatelessWidget {
                     scale: 0.9,
                   ),
                 ),
-                title: Text(
-                  state.devices[index].devDetail ?? "ไม่มีชื่อ",
-                  style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
-                ),
-                tileColor: const Color.fromARGB(255, 165, 190, 202),
-                subtitle: SubtitleList(deviceInfo: state.devices[index]),
                 onTap: (() {
                   try {
                     Navigator.pushNamed(

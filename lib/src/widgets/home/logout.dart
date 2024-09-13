@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:temp_noti/src/bloc/user/users_bloc.dart';
 import 'package:temp_noti/src/configs/route.dart' as custom_route;
 
 class Logout extends StatelessWidget {
@@ -23,11 +25,11 @@ class Logout extends StatelessWidget {
                 },
               ),
               TextButton(
-                child: const Text('ออกจากระบบ',
-                    style: TextStyle(color: Colors.red)),
+                child: const Text('ออกจากระบบ', style: TextStyle(color: Colors.red)),
                 onPressed: () {
                   SharedPreferences.getInstance().then((prefs) {
                     prefs.clear();
+                    context.read<UsersBloc>().add(RemoveUser());
                     Navigator.of(dialogContext).pop();
                     Navigator.pushNamedAndRemoveUntil(
                       context,

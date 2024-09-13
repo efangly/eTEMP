@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Color.fromARGB(255, 0, 77, 192),
-                  Color.fromARGB(255, 165, 190, 202),
+                  Color.fromARGB(255, 255, 255, 255),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
                     thickness: 2,
                     indent: 20,
                     endIndent: 20,
-                    color: Colors.white70,
+                    color: Colors.white38,
                   ),
                 ),
                 ContactUs(),

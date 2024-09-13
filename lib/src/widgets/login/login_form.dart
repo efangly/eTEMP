@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:temp_noti/src/bloc/user/users_bloc.dart';
 import 'package:temp_noti/src/configs/route.dart' as custom_route;
 import 'package:temp_noti/src/services/api.dart';
 import 'package:temp_noti/src/widgets/utils/toast.dart';
@@ -68,7 +70,7 @@ class _LoginFormState extends State<LoginForm> {
 
   Container _buildSubmitBtn() {
     const gradientStart = Color.fromARGB(255, 39, 101, 188);
-    const gradientEnd = Color.fromARGB(255, 48, 190, 255);
+    const gradientEnd = Color.fromARGB(255, 25, 175, 244);
     void submitLogin() {
       usernameController.clear();
       passwordController.clear();
@@ -101,6 +103,7 @@ class _LoginFormState extends State<LoginForm> {
       child: TextButton.icon(
         onPressed: () async {
           await Api.checkLogin(usernameController.text, passwordController.text).then((value) {
+            context.read<UsersBloc>().add(SetUser(value.data!.displayName, value.data!.userPic));
             submitLogin();
           }).catchError((err) {
             Toast.showAlertBar(
@@ -117,9 +120,9 @@ class _LoginFormState extends State<LoginForm> {
           color: Colors.white60,
         ),
         label: const Text(
-          'Login',
+          'LOGIN',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.white70,
             fontSize: 22.0,
             fontWeight: FontWeight.w700,
           ),

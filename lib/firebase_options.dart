@@ -59,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyB8MqCutrb45x2sAzqIg4f6hCCIn0CbO4M',
-    appId: '1:688422454433:ios:164f8f0f9d1e920443dce0',
+    appId: '1:688422454433:ios:49a2325d6d4e6a1043dce0',
     messagingSenderId: '688422454433',
     projectId: 'temp-alarm',
     storageBucket: 'temp-alarm.appspot.com',
-    iosBundleId: 'com.thanes.tempNoti',
+    iosBundleId: 'com.thanes.tempNoti.RunnerTests',
   );
+
 }

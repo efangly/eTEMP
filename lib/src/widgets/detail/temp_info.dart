@@ -115,6 +115,11 @@ class _TempInfoState extends State<TempInfo> {
         MqttQos.atLeastOnce,
         builder.payload!,
       );
+      client.publishMessage(
+        'siamatic/etemp/v1/${widget.devSerial}/temp',
+        MqttQos.atLeastOnce,
+        builder.payload!,
+      );
       builder.clear();
     } catch (error) {
       if (kDebugMode) {

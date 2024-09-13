@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:temp_noti/src/pages/pages.dart';
-import 'package:temp_noti/src/pages/register_page.dart';
-import 'package:temp_noti/src/pages/setting_page.dart';
 
 class Route {
   static const home = '/';

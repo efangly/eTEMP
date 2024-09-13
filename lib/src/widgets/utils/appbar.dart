@@ -3,12 +3,12 @@ import 'package:temp_noti/src/constants/color.dart';
 
 class CustomAppbar extends StatelessWidget {
   const CustomAppbar({super.key, required this.titleInfo});
-  final Row titleInfo;
+  final Widget titleInfo;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 250,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: const BoxDecoration(
         gradient: LinearGradient(

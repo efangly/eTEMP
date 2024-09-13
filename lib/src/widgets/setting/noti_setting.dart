@@ -34,121 +34,93 @@ class NotiSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8, left: 15, right: 15, bottom: 8),
-      child: Column(
-        children: [
-          const Row(
-            children: [
-              Icon(Icons.notifications, color: Colors.white),
-              Text(
-                "Notification Setting",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+    return Column(
+      children: [
+        const Row(
+          children: [
+            Icon(Icons.notifications, color: Colors.white70),
+            Text(
+              "Notification Setting",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white70,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(" Return to normal", style: TextStyle(fontSize: 18)),
+            Switch(
+              value: normalMsg,
+              onChanged: (bool value) => onNormalMsg(value),
+              activeColor: Colors.green[800],
+              activeTrackColor: Colors.green[400],
+              inactiveThumbColor: Colors.grey[600],
+              inactiveTrackColor: Colors.white70,
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(" Notification", style: TextStyle(fontSize: 18)),
+            Switch(
+              value: notificationMsg,
+              onChanged: (bool value) => onNotificationMsg(value),
+              activeColor: Colors.green[800],
+              activeTrackColor: Colors.green[400],
+              inactiveThumbColor: Colors.grey[600],
+              inactiveTrackColor: Colors.white70,
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(" First message delay", style: TextStyle(fontSize: 18)),
+            SizedBox(
+              width: 50,
+              height: 40,
+              child: TextField(
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.number,
+                controller: firstController,
+                decoration: const InputDecoration(
+                  labelStyle: TextInputStyle.inputStyle,
                 ),
+                inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(" Return to normal", style: TextStyle(fontSize: 18)),
-              Switch(
-                value: normalMsg,
-                onChanged: (bool value) => onNormalMsg(value),
-                activeColor: Colors.green[800],
-                activeTrackColor: Colors.green[400],
-                inactiveThumbColor: Colors.grey[600],
-                inactiveTrackColor: Colors.white70,
-              ),
-            ],
-          ),
-          const SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(" Notification", style: TextStyle(fontSize: 18)),
-              Switch(
-                value: notificationMsg,
-                onChanged: (bool value) => onNotificationMsg(value),
-                activeColor: Colors.green[800],
-                activeTrackColor: Colors.green[400],
-                inactiveThumbColor: Colors.grey[600],
-                inactiveTrackColor: Colors.white70,
-              ),
-            ],
-          ),
-          const SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(" First message delay", style: TextStyle(fontSize: 18)),
-              SizedBox(
-                width: 50,
-                height: 40,
-                child: TextField(
-                  textAlign: TextAlign.center,
-                  keyboardType: TextInputType.number,
-                  controller: firstController,
-                  decoration: const InputDecoration(
-                    labelStyle: TextInputStyle.inputStyle,
-                  ),
-                  inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(" Repeat", style: TextStyle(fontSize: 18)),
+            SizedBox(
+              width: 50,
+              height: 40,
+              child: TextField(
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.number,
+                controller: repeatController,
+                decoration: const InputDecoration(
+                  labelStyle: TextInputStyle.inputStyle,
                 ),
+                inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
               ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(" Repeat", style: TextStyle(fontSize: 18)),
-              SizedBox(
-                width: 50,
-                height: 40,
-                child: TextField(
-                  textAlign: TextAlign.center,
-                  keyboardType: TextInputType.number,
-                  controller: repeatController,
-                  decoration: const InputDecoration(
-                    labelStyle: TextInputStyle.inputStyle,
-                  ),
-                  inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 30),
-          const Row(
-            children: [
-              Icon(Icons.schedule, color: Colors.white),
-              Text(
-                " Schedule",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text(" Repeat", style: TextStyle(fontSize: 18)),
-              Switch(
-                value: repeatMsg,
-                onChanged: (bool value) => onRepeatMsg(value),
-                activeColor: Colors.green[800],
-                activeTrackColor: Colors.green[400],
-                inactiveThumbColor: Colors.grey[600],
-                inactiveTrackColor: Colors.white70,
-              ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 30),
+      ],
     );
   }
 }

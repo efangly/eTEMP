@@ -3,11 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:temp_noti/src/bloc/devices_bloc/devices_bloc.dart';
-import 'package:temp_noti/src/bloc/notifications_bloc/notifications_bloc.dart';
+import 'package:temp_noti/src/bloc/device/devices_bloc.dart';
+import 'package:temp_noti/src/bloc/notification/notifications_bloc.dart';
 import 'package:temp_noti/src/configs/route.dart' as custom_route;
+import 'package:temp_noti/src/constants/style.dart';
 import 'package:temp_noti/src/services/firebase_api.dart';
-// import 'package:temp_noti/src/widgets/utils/sound.dart';
 
 class App extends StatelessWidget {
   const App({super.key, required this.token});
@@ -29,16 +29,23 @@ class App extends StatelessWidget {
         fontSize: 18,
         toastLength: Toast.LENGTH_SHORT,
       );
-      // PlaySound.notification();
     });
+    // if (token != null) {
+    //   FirebaseApi().initNotifications();
+    // }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: token == null ? '/login' : '/',
       routes: custom_route.Route.getAll(),
-      title: 'ThanesEtemp',
+      title: 'SMTrack+',
       theme: ThemeData(
-        brightness: Brightness.dark,
         fontFamily: 'Anuphan',
+        inputDecorationTheme: ThemeDataStyle.inputDecorationStyle,
+        textSelectionTheme: const TextSelectionThemeData(cursorColor: Colors.blue),
+        textTheme: ThemeDataStyle.textThemeStyle,
+        iconTheme: const IconThemeData(color: Colors.white70),
+        listTileTheme: const ListTileThemeData(textColor: Colors.white70, iconColor: Colors.white70),
+        colorScheme: Theme.of(context).colorScheme.copyWith(outline: Colors.white30),
       ),
     );
   }

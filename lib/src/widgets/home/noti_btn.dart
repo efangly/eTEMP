@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:temp_noti/src/bloc/notifications_bloc/notifications_bloc.dart';
+import 'package:temp_noti/src/bloc/notification/notifications_bloc.dart';
 import 'package:temp_noti/src/configs/route.dart' as custom_route;
 
 class NotificationButton extends StatelessWidget {

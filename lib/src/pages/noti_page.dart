@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:temp_noti/src/bloc/notifications_bloc/notifications_bloc.dart';
+import 'package:temp_noti/src/bloc/notification/notifications_bloc.dart';
 import 'package:temp_noti/src/constants/color.dart';
 import 'package:temp_noti/src/widgets/utils/appbar.dart';
 import 'package:temp_noti/src/widgets/utils/convert.dart';

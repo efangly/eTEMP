@@ -7,7 +7,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 70, bottom: 30),
-      child: Image.asset('assets/images/logo.png', height: 230, scale: 0.7),
+      child: Image.asset('assets/images/logo.png', height: 180, scale: 0.7),
     );
   }
 }
